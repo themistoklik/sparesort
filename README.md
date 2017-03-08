@@ -1,7 +1,7 @@
 # Sparesort
 
 **Sparesort** is a Java library for performing sequential pattern mining, which is a data mining problem for analyzing sequencing or time related processes, e.g. customer purchase or web access patterns. 
-This library implements BIDE, an efficient algorithm for mining frequent closed sequences.
+This library implements BIDE, an efficient algorithm for mining frequent closed sequences. This is my own fork with tuned I/O for the needs of my thesis.
 
 ## System Requirements
 
@@ -12,19 +12,10 @@ This library implements BIDE, an efficient algorithm for mining frequent closed 
 ### From console
 
 The distribution contains an executable JAR (`sparesort-X.Y.Z.jar`).
-You can simply try the argorithm by running `java -jar` command in your console.
 
-    java -classpath commons-lang3-3.1.jar:slf4j-api-1.6.4.jar \
-         -jar sparesort-X.Y.Z.jar \
-         min_sup sequence1 sequence2 sequence3 ...
+    java -jar sparesort-X.Y.Z.jar <directory_holding_sequence_files> minsup
 
-Note that dependent libraries ([Commons Lang](http://commons.apache.org/proper/commons-lang/) and [SLF4J](http://www.slf4j.org/)) are provided by the classpath argument.
-This console application takes the following two kinds of arguments:
-
-* The first argument `min_sup` is an absolute minimium support, an integer larger than 1.
-* The other argumets `sequence1 sequence2 sequence3 ...` are paths to sequence files. Each file contains one sequence of string items separated by new lines.
-
-After mining is finished, all frequent closed sequences qualified by the threshold and their frequency are printed to the standard output.
+After mining is finished, all frequent closed sequences qualified by the threshold and their frequency are written in a file to avoid spamming the stdout (for large tasks it's cumbersome).
 
 ### Within your code
 
